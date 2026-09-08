@@ -1,7 +1,7 @@
 interface:
   display_name: "Swarm"
-  short_description: "Route bounded work to configured agents safely"
-  default_prompt: "Use $swarm to route this repository change to available authorized workers while keeping Main responsible for semantics, integration, and verification."
+  short_description: "Route implementation local-worker first"
+  default_prompt: "Use $swarm to check local-worker routing before designing this repository patch, re-route newly ready work at dependency checkpoints, and keep Main responsible for semantics, integration, verification, and owned-service cleanup."
 
 policy:
   allow_implicit_invocation: true

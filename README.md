@@ -15,7 +15,7 @@ Nine focused, independently installable skills for grounded changes, evidence-dr
 | [request-grounding](skills/request-grounding/SKILL.md) | 기존 기능과 실제 요구를 확인하기 전에 구현부터 시작함 | “기능 추가 전에 이미 가능한지, 어느 계층을 바꿔야 하는지 확인해줘.” |
 | [evidence-driven-debugging](skills/evidence-driven-debugging/SKILL.md) | 첫 수정 후 재발하거나 여러 원인이 혼재함 | “수정 후에도 재발했어. 원인을 판별할 근거를 먼저 찾아줘.” |
 | [execute-leanly](skills/execute-leanly/SKILL.md) | 파일 읽기·계획·상태 조회·검증을 반복함 | “검증된 지점부터 남은 작업만 이어서 처리해줘.” |
-| [swarm](skills/swarm/SKILL.md) | 분리 가능한 구현과 메인의 판단 책임이 섞임 | “설정된 작업자가 있다면 확정된 작은 구현을 맡기고 결과를 통합해줘.” |
+| [swarm](skills/swarm/SKILL.md) | 메인이 준비한 뒤에도 위임 가능한 구현을 계속 직접 수행함 | “구현 전에 로컬 작업자 우선으로 판단하고, 준비가 끝난 작업도 다시 분배해줘.” |
 | [adversarial-review](skills/adversarial-review/SKILL.md) | 취합한 결론의 숨은 전제와 중요한 반례를 놓침 | “이 계획을 적대적으로 검토하고 유지할지 판단해줘.” |
 | [codex-why](skills/codex-why/SKILL.md) | 관행·추론·과거 결정을 필수 규칙처럼 설명함 | “그 승인이 필수라는 판단은 어떤 현재 규칙에서 나왔어?” |
 | [pink-elephant-guard](skills/pink-elephant-guard/SKILL.md) | 폐기된 문구나 구조가 최종 결과에 다시 등장함 | “확정된 방향만으로 바로 사용할 최종 소개문을 작성해줘.” |
@@ -66,7 +66,7 @@ $visual-prompt-reconstructor 첨부 이미지를 재현할 한국어·영어 프
 ## 의존성과 적용 범위
 
 - **일반 워크플로 스킬:** 별도의 기억 서버나 전용 실행 서비스가 필요하지 않습니다. 다른 스킬 이름은 선택적 연계 안내입니다. 필요한 도구가 없으면 미확인 사항을 표시하며 결과를 꾸며내지 않습니다.
-- **swarm:** 설정된 작업자와 검증 가능한 실행 결과가 있을 때만 위임합니다. 이 배포판은 모델이나 작업자 실행기를 제공하지 않습니다. 작업자가 없으면 메인이 수행합니다. [설정 계약](skills/swarm/references/worker-setup.md)을 참고하세요.
+- **swarm:** 구현 전과 실제 의존성 분기점에서 설정된 로컬 작업자에게 맡길 수 있는지 우선 판단합니다. 메인이 요구·원인을 확정한 뒤에는 새로 준비된 구현을 다시 분배하며, 처음 메인 담당으로 정했다고 이후 작업까지 고정하지 않습니다. 별도 작업자는 작업 전체에서 최대 1명이며, 실패한 작업을 다른 작업자에게 연쇄 재위임하지 않습니다. 이 배포판은 모델이나 실행기를 제공하지 않으며, 사용할 수 있는 작업자 계약이 없으면 메인이 수행합니다. 설정된 서비스가 꺼져 있는 경우에는 승인된 시작·준비 확인·소유권 기반 종료 계약을 따릅니다. [설정 계약](skills/swarm/references/worker-setup.md)을 참고하세요.
 - **visual-prompt-reconstructor:** 이미지를 읽을 수 있는 호스트와 실제 참고 이미지가 필요합니다. 생성 도구는 프롬프트 작성만 할 때는 필요하지 않습니다.
 - **Codex 전용 동작:** `agents/openai.yaml`, task 관리, 도구·승인 방식은 호스트에 따라 다릅니다. 다른 에이전트에서의 동일 동작은 검증하지 않았습니다.
 
