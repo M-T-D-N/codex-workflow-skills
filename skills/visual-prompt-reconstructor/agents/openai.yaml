@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Prompt Reconstructor"
+  short_description: "이미지를 분석해 한국어·영어 재현 프롬프트 생성"
+  default_prompt: "Use $visual-prompt-reconstructor to analyze this reference image and create Korean and English reconstruction prompts."

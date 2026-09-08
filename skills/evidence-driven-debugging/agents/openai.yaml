@@ -1,0 +1,7 @@
+interface:
+  display_name: "Evidence-Driven Debugging"
+  short_description: "복합·반복 실패를 판별 근거로 분리해 근본 원인을 진단"
+  default_prompt: "Use $evidence-driven-debugging to distinguish the plausible causes of this recurring failure with decisive evidence before changing code."
+
+policy:
+  allow_implicit_invocation: true

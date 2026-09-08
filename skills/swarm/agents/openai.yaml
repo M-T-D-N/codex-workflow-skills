@@ -1,0 +1,7 @@
+interface:
+  display_name: "Swarm"
+  short_description: "Route bounded work to configured agents safely"
+  default_prompt: "Use $swarm to route this repository change to available authorized workers while keeping Main responsible for semantics, integration, and verification."
+
+policy:
+  allow_implicit_invocation: true

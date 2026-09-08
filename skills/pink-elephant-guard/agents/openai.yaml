@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pink Elephant Guard"
+  short_description: "현재 확정안만으로 최종 산출물을 깨끗하게 재구성"
+  default_prompt: "Use $pink-elephant-guard to rebuild this final deliverable from the current confirmed state without resurfacing rejected concepts."
+
+policy:
+  allow_implicit_invocation: true

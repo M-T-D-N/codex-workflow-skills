@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prepare Codex Handoff"
+  short_description: "Prepare a prompt for resuming in another Codex task"
+  default_prompt: "Use $prepare-codex-handoff to prepare a context-preserving prompt for another Codex task."
+
+policy:
+  allow_implicit_invocation: true

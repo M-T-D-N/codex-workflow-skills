@@ -1,0 +1,7 @@
+interface:
+  display_name: "Execute Leanly"
+  short_description: "Lean execution and productive long-job monitoring"
+  default_prompt: "Use $execute-leanly to resume authorized work leanly and productively monitor long-running jobs without resource or scope conflicts."
+
+policy:
+  allow_implicit_invocation: true
