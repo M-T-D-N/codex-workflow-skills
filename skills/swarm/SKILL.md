@@ -1,97 +1,75 @@
 ---
 name: swarm
-description: "For nontrivial repository implementation, check local-worker routing before Main designs or writes the patch, then re-route newly ready work at dependency checkpoints. Delegate small, low-risk tasks with settled behavior and a decisive acceptance check to a configured worker. Keep uncertain semantics, risk, and integration with Main. Skip Q&A, read-only investigation, trivial edits, urgent work, and inseparable changes."
+description: Route nontrivial repository implementation, fixes, refactoring, and bounded evidence collection to suitable workers before Main solves the task. Use when a clear work unit has enough execution or investigation left to justify handoff and verification. Keep simple Q&A, status checks, trivial edits, and inseparable Main judgment with Main.
 ---
 
 # Swarm
 
-Reduce Main's implementation load by handing suitable semantic units to the configured local worker. Check ownership during the first targeted reads the task already needs, then repeat at real dependency checkpoints until all authorized implementation lanes close. An initial Main decision does not end routing. Do not create a repository-wide survey, split work artificially, or invent work just to increase delegation.
+Reduce Main's investigation, implementation, and rework while preserving required outcomes and verification. Use native Luna for suitable complete work units and Local Qwen for its verified narrow lane. Do not create work, fragment a coherent task, or count calls as savings.
 
-This portable edition includes no worker runtime, model weights, executable adapter, or fixed machine paths. Main means the agent responsible for the user's task. A worker means an already available, authorized execution surface.
+This portable edition supplies instructions, not a worker runtime, model weights, or executable adapter. Read [worker setup](references/worker-setup.md) when the current environment does not establish an authorized worker contract. Use the named native model only when the host exposes it; otherwise Main owns the unit. Never invent model identifiers, executable paths, or substitute-model cascades.
 
-## Establish availability and authority
+## Preserve authority
 
-- Preserve the user's selected main model and reasoning settings.
-- User instructions, repository rules, sandbox restrictions, and external-action approvals still govern every worker. Installing this skill does not authorize an otherwise prohibited delegation, service launch, dependency installation, or external transmission.
-- Before dispatch, read [worker setup](references/worker-setup.md) if the current environment does not already establish the worker's entrypoint, isolation, lifecycle, and result contract.
-- Prefer a configured local worker for eligible bounded work. Separate eligibility from service readiness: a stopped service is not a reason to skip eligible work when its configured, authorized entrypoint can start it and verify exact readiness. If the worker contract is missing, disallowed, or unverifiable, Main owns the task. Report a launch, permission, identity, or consumer conflict as an execution condition; do not describe it as absence of suitable work or invent an executable path.
-- Only after the local-worker check, consider at most one additional host-native or remote worker in the entire task for a substantial independent lane that is not local-worker eligible and has no known capability or context mismatch. Use the host's permitted model selection; do not override the main model. This worker is not a repository mapper, leaf finder, critic, or fallback after local-worker failure.
+- Keep the user's Main model and reasoning effort unchanged. Main owns scope, approvals, consequential meaning, integration, and the final answer.
+- Inherit repository, sandbox, external-data, and scheduling boundaries. This skill requests eligible delegation; it cannot override the available tool's conditions or grant new permissions.
+- Use one owner per unit, one active writer per repository or worktree, and no nested delegation or competing implementation. Tests sharing mutable outputs also conflict.
+- Track the exact Qwen invocation or Luna handle. Before transferring ownership, confirm its execution ended and attribute changes against the starting state. Completion of a turn does not prove disposal of an agent or release of a slot. Classify each result once as accepted or discarded.
 
-## Choose an owner before writing
+## Choose the next owner before solving the unit
 
-Apply Main exclusions to the actual unit: unresolved outcome semantics, architecture or shared-core ownership, security, permissions, migrations, deployment, possible data loss, timing or concurrency judgment, novel algorithms, formal or global claims, conflicting material evidence, and work without a decisive independent check. A parent task involving deployment or shared state does not exclude separately verifiable downstream implementation.
+Use the first targeted reads already needed for the request. Consider the whole request first, then natural independently checkable units. Do not run a repository survey, mapper, scoring system, or routing log just to find delegation.
 
-Distinguish Main preparation from Main implementation. Main may perform a necessary bounded clarification, diagnosis, contract, or acceptance example that makes a low-risk unit ready, then re-route before designing or writing its product patch. If preparation would substantially derive the patch, or a hard exclusion remains, Main implements that unit. Do not manufacture tests or speculative tasks to enable delegation.
+1. **Use an existing tool** when a verified command or converter already completes the work. Main handles genuinely trivial edits whose handoff and review would dominate.
+2. **Keep unresolved meaning with Main.** Main decides architecture/shared-core contracts, security, permissions, migration, deployment, possible data loss, temporal/concurrency semantics, novel algorithms, formal/global claims, and material evidence conflicts. Keep inseparably coupled implementation or work without a reliable way to judge its outcome with Main. Complexity or a risky parent task does not exclude a separable, reversible unit with settled behavior.
+3. **Hand off ready work.** The required outcome and bounded ownership must be clear, necessary inputs/tools accessible, acceptance independently checkable, and enough work remain to justify handoff plus review. Main may resolve the missing requirement, root cause, or acceptance example, but stops before deriving the patch. Routine internal design and finding the project's relevant test command belong to a capable native worker.
+4. **Choose the suitable worker directly.** Local Qwen remains available for low-risk, limited-search, frozen-behavior changes to 1–3 explicitly owned UTF-8 source, product, test, or fixture files with a fast, decisive acceptance command. Choose it when this verified narrow lane fits, considering startup, review, and cleanup. For other ready units, native `gpt-5.6-luna` at `max` is the default execution owner when the native scheduling contract allows it and there is no concrete capability/context mismatch. Luna does not require a failed Qwen attempt, a proof that Qwen is incapable, or Qwen's file-count cap.
+5. **Distinguish suitability from availability.** A disabled service, model/capacity limit, approval, or a host rule requiring independent parallel work is an execution condition. Do not disguise it as unsuitable work or bypass it. Main owns a unit that cannot be delegated safely, with one concrete reason.
 
-A local worker may own a whole task or a downstream unit when all apply:
+After Main resolves meaning or a prerequisite, or after an accepted result is integrated, route the next remaining unit before Main designs its patch. Successful completion does not exhaust Luna's allocation for the entire user task: different ready units may be assigned sequentially. Reuse decisions whose inputs are unchanged. Never relabel a failed objective as a new unit.
 
-- The expected change is limited to 1–3 explicitly owned UTF-8 source, product, test, or fixture files.
-- The desired behavior is settled by the request, existing interface, and acceptance criteria.
-- Discovery is limited, the change is low risk and non-urgent, and it introduces no unsettled semantics.
-- A fast acceptance command independently establishes the required result. Reuse an existing check; Main may first add a minimal independently specified acceptance case already required by the request. Worker-invented expected values are not an independent oracle.
-- Workspace ownership is clear and existing user changes can be preserved.
+### Bounded evidence collection
 
-File count alone does not establish eligibility. Unchosen implementation details are not unsettled outcome semantics. Do not keep an otherwise eligible unit with Main merely because Main could write it faster or has no parallel work; a short synchronous wait is acceptable. The whole request may be one eligible unit.
+Luna may answer a concrete multi-file question, locate relevant callers/tests, extract specified facts, or classify bounded logs when handoff has useful work to replace. It returns inspected scope, exact file/line or source references, findings, and gaps; a diff is not required. Main retains interpretation of the user's request and consequential conclusions. A failed or limited search does not prove global absence. Do not spawn a researcher for a one-command lookup or open-ended exploration. This does not expand the Qwen writer or critic adapter contract.
 
-After Main settles a requirement or root cause, finishes a prerequisite, or observes a new in-scope defect, route the next implementation unit before designing or writing it. Recheck only units whose relevant facts changed. After a worker closes and its effects are attributed, route the next ready unit without waiting for another user turn. Otherwise keep the unit with Main for a concrete reason such as risk, coupling, no oracle, excessive discovery, writer conflict, urgency, or a trivial edit. No routing log is required.
+## Handoff and scheduling
 
-## Freeze a bounded task packet
+A packet names the exact repository/workspace and starting state, pre-existing changes to preserve, user outcome and material exceptions, owned files or a narrow feature boundary with exclusions, source locations, acceptance behavior and known commands, and uncertainties to return rather than guess. Native workers may choose ordinary implementation details and discover suitable existing verification within that boundary. Qwen requires its exact executable/arguments, working directory, runtime/environment, owned 1–3 paths, and acceptance command before dispatch. Shell syntax requires an explicit shell executable.
 
-Provide only the information the worker needs:
+Reference original files instead of copying their full contents or the whole conversation. Do not omit constraints to shorten the packet. Return concise findings and evidence locations instead of full logs. No new packet files, telemetry, orchestration layer, or test framework is required.
 
-- Exact repository or worktree and current source identity.
-- Relevant pre-existing changes that must be preserved.
-- User outcome, owned files, settled behavior, and prohibited scope.
-- The independent acceptance command and what constitutes failure.
-- Uncertainties to report instead of guessing.
+Read [Luna execution](references/luna-lane.md) only when choosing a native unit, and include its worker startup instructions in the native handoff. When reusing a child after relevant execution instructions change, pass the changed instructions with the next handoff; do not assume the child reloads edited files. Keep at most one active Luna unit at a time. The host's current parallel-work requirements still apply; when it permits serial offloading, lack of parallel Main work alone is not a reason to reject it. Qwen's existing synchronous route remains available. Start only ready units; dependencies must finish first.
 
-Reference accessible source files rather than copying unchanged files into the packet. Do not transmit credentials, unrelated files, or private context to a worker. External workers require authorization covering the supplied content and destination.
+Once assigned, let the worker own implementation, related checks, and ordinary local corrections. Main advances independent work or uses a supported bounded wait; it does not solve the same unit, run its commands one by one, or poll unchanged state repeatedly. Honor explicit user/host call budgets and cancellation limits. Follow Luna's patient-wait guidance; elapsed time, silence, or a wait timeout alone is not execution failure.
 
-The acceptance command must name the executable and arguments in the verified working directory and environment. Shell expressions require an explicit shell executable; do not pass them to a shell-free runner. Preserve project-specific signing, data, and cache identities across execution permissions. Ask for a short summary of unresolved uncertainty and owned paths the worker could not inspect or change; use primary result fields for the diff and test evidence.
+If the user requirement or relevant source changes materially, do not integrate stale output. End or safely interrupt that exact execution and attribute its effects before revalidating or discarding it. Additive guidance that preserves the outcome does not automatically invalidate the unit.
 
-## Schedule and track
+## Accept results and converge
 
-- Keep one active implementation owner per lane and one active writer per repository or worktree. Concurrent writers require separate authorized worktrees or repositories and disjoint ownership.
-- No nested delegation, duplicate implementations, or fixed fan-out.
-- Record every exact tool invocation or agent handle in the running task context. Feed local-worker units sequentially; dispatch the next only after the previous invocation closes and its effects are attributed. Classify each result once as accepted or discarded before overall completion. Do not dispatch a replacement while its invocation is live.
-- Main may continue independent authorized work that does not conflict with the worker's inputs, outputs, or resource needs. Do not design a competing patch for assigned work.
-- Use supported bounded waits tied to the next decision point and progress evidence. A longer additional-worker lane should have useful independent Main work to overlap it and must not block the critical path. Empty output or a wait timeout does not prove failure. Never restart or terminate an unrelated process by a broad name match.
-- Reuse an existing healthy service. Start or prewarm a worker only through an explicitly configured and authorized lifecycle, with observable identity and resource ownership. Prewarm only eligible work, join readiness before dispatch, and do not retry a failed prewarm through another launch path. Do not alter shared runtimes to make delegation possible.
+Main inspects the actual diff/artifact and directly affected dependencies, owned scope, requested behavior, and real verification evidence. A worker's summary or self-reported model identity is not proof. Expected test values must follow the requirement or existing contract; never accept weakened tests or circular implementation-derived expectations.
 
-If an additional-worker or critic spawn is rejected by capacity or an unavailable model/tool, do not retry the spawn. Inspect the visible agent tree at most once and reuse only an exactly compatible idle child through supported operations; otherwise Main owns the lane. Do not infer a slot leak or create a new task, fork, or replacement-model cascade. Report a required independent critic as unavailable rather than substituting Main self-review.
+Reuse reliable checks for unchanged code and environment. Repeat only for changed inputs/integration state, a concrete gap, unreliable evidence, or required authority. A native worker returns actual commands, working directory, relevant environment, exit status, results, changed paths, and remaining uncertainty.
 
-## Accept, recover, and integrate
+Normal compile/test corrections within a running unit belong to the worker. Return control when meaning needs a new decision, the same failure repeats without progress, or an execution limit is reached. After a failed, invalid, or rejected candidate, confirm the exact execution ended, attribute partial changes, preserve user changes, and let Main take over. No failed-objective retry, renamed replacement, or Qwen→Luna→other-model cascade. If attribution is unsafe, stop.
 
-Accept a candidate only when:
+After a native spawn is rejected by capacity/model/surface availability, do not repeat it. Inspect `list_agents` at most once if useful; reuse only an exactly compatible idle non-root child via supported `followup_task`, otherwise Main owns the unit. Do not infer a slot leak or create a new task/fork to evade the limit. Reuse an unresolved common execution failure for affected units until evidence changes.
 
-1. The exact invocation has completed and the result is well formed.
-2. The intended non-empty diff is limited to owned files.
-3. No existing test has been weakened and every test or fixture edit was explicitly in scope.
-4. The independent acceptance command succeeded.
-5. Main inspects the actual diff and confirms it satisfies the settled behavior at the current source identity.
+Use independent review only when requested or justified by consequence, conflicting evidence, or a material validation gap. For Qwen's bounded critic option, read [Qwen critic](references/qwen-critic.md); its one-critic contract remains unchanged, and Qwen never reviews its own candidate. Otherwise Main reviews unless independence is an explicit acceptance condition; report unavailable independent review honestly.
 
-A worker's claim that checks passed is insufficient without accessible command results or equivalent primary evidence. Reuse trustworthy existing validation; do not repeat a full suite merely because another agent ran it.
+## Local Qwen execution and lifecycle
 
-Account for a nonzero public-entrypoint exit or unresolved service cleanup even if candidate files and checks appear successful.
+Use the verified local adapter and lifecycle described in [worker setup](references/worker-setup.md). This distribution includes no Qwen executable or control-plane script. Select an eligible unit before starting a service. An off service alone is not a reason to reject it when the configured, authorized entrypoint can start it and verify its exact model, context, and readiness.
 
-After failure, timeout with partial output, or an invalid result, first establish whether the invocation is still active. Close only its exact authorized handle as appropriate, attribute its changes against the starting state, and preserve user changes before transferring ownership. If changes cannot be safely attributed, stop and report the uncertainty. Once recovered, Main owns the failed lane; do not retry the writer or cascade through replacement workers.
+Optional prewarm may overlap necessary preparation only through that documented lifecycle; join readiness before dispatch and retain the returned instance identity. Do not prewarm excluded work or retry a failed prewarm through another path.
 
-A genuinely different objective or newly observed defect may be routed after the failed invocation closes and its effects are settled, even if it owns the same files. Renaming the failed task, making a commit, or choosing another patch for the same objective does not create a new lane. Reuse a known common execution failure for affected lanes until evidence shows it is resolved; do not repeat known failing launches.
+Invoke the configured public operation once per frozen unit with its actual supported workspace, request, owned-path, and acceptance-command inputs. Its contract must establish resource ownership, readiness, and accessible worker results, including on nonzero exit. Do not bypass its control plane with a lower-level worker script. Retain the service instance and whether this task started it, including prewarm ownership.
 
-If the user requirement or relevant source changes materially before integration, active or returned output is stale. Confirm invocation closure and attribute changes before revalidating or discarding it, or dispatching a replacement. Additive guidance that leaves settled behavior unchanged does not invalidate a lane. Never integrate a candidate twice.
+Accept only a well-formed adapter `DONE` (or a documented equivalent completion state), a non-empty intended owned diff, only the expected 1–3 changed files, explicitly owned and required test/fixture changes, no weakened or unrelated tests, acceptance exit `0`, and Main's semantic check. Account for nonzero public exit or unresolved release before claiming completion.
 
-## Release owned services
+Reuse this task's service across successive units and immediately continuing goal turns. Before a normal final response, goal completion/cancellation/block, or open-ended wait, end this task's calls and release only its own instance through the configured owner-checked operation using the recorded instance identity or owner token. Active-consumer protection may defer release; never stop a borrowed or replaced service. A documented stop-after option may request the same owned cleanup for a final isolated call. Report unresolved release. After abrupt interruption, reconcile the recorded identity; host-exit cleanup is a fallback, not proof of turn cleanup. If no safe release contract exists, do not start a temporary service.
 
-Retain whether this work started a service, including prewarm, and its exact instance identity or ownership token. Reuse it across successive units and immediately continuing goal turns. Before a normal final response, or when work completes, is cancelled, becomes blocked, or enters an open-ended wait, close this work's invocations and release only the instance it started through the configured owner-checked lifecycle. An active goal alone is not a reason to keep a service warm.
+## Report only supported effects
 
-Preserve borrowed or replaced instances and let the control plane protect other active consumers. Report deferred or unresolved cleanup rather than claiming shutdown. After interruption, reconcile the recorded instance on resume; a host-exit fallback is not evidence that turn cleanup happened. If no safe release contract exists, do not start a temporary service.
+Use the dated [model price comparison](references/luna-lane.md#price-evidence) as one factor when choosing native work. Compare qualified outcomes and total handoff/review/rework cost, not nominal price alone; raw token reduction and monetary savings are separate claims. Sol's comparison price does not add an automatic Sol role or fallback.
 
-## Review when it changes confidence
-
-Use at most one independent critic for the candidate, and only when requested or when material risk, conflicting evidence, or a validation gap justifies it. The critic must not have produced the candidate. Use a read-only surface with access limited to the relevant evidence.
-
-For a bounded local review, require settled low-risk behavior, 1–3 product or source files, unchanged test definitions, and an independent acceptance check. Keep security, concurrency, recovery, architecture, and global claims with Main unless an appropriately qualified independent review is explicitly required and available.
-
-Review failure means review unavailable, not approval or rejection. If independent review is a required acceptance condition and unavailable, report that gap; Main self-review is not independent evidence. Bind every verdict to the exact candidate. After a correction, describe any Main-only verification accurately.
-
-Main owns final synthesis, integration, and the user-facing result. Stop when the requested outcome and required evidence are complete.
+Distinguish skill selection, successful dispatch, accepted work, and measured savings. Use existing results/logs when available; account for Main preparation/review/takeover and worker usage together, with latency separately. Do not double-count cumulative usage events or token subcategories. A successful example proves that path only. Without comparable complete evidence, report token/cost savings and automatic invocation rate as unmeasured.

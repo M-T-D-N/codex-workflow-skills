@@ -1,7 +1,7 @@
 interface:
   display_name: "Swarm"
-  short_description: "Route implementation local-worker first"
-  default_prompt: "Use $swarm to check local-worker routing before designing this repository patch, re-route newly ready work at dependency checkpoints, and keep Main responsible for semantics, integration, verification, and owned-service cleanup."
+  short_description: "Delegate bounded work and preserve verification"
+  default_prompt: "Use $swarm to route suitable implementation or bounded evidence collection to a worker before Main solves it, preserving scope and verification."
 
 policy:
   allow_implicit_invocation: true
