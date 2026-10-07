@@ -1,5 +1,9 @@
 # Codex Workflow Skills
 
+<p align="center">
+  <img src="assets/workflow-banner.svg" alt="Codex Workflow Skills — nine independently installable skills" width="1120" />
+</p>
+
 실제 작업에서 반복되는 판단·실행 문제를 다루는 **9개의 선택 설치형 스킬**입니다. 요청과 기존 기능을 먼저 맞추고, 반복 오류를 근거로 진단하고, 검증된 상태에서 작업을 이어가도록 돕습니다.
 
 Nine focused, independently installable skills for grounded changes, evidence-driven debugging, lean execution, bounded delegation, critical review, task handoff, and visual prompt reconstruction.
@@ -7,6 +11,8 @@ Nine focused, independently installable skills for grounded changes, evidence-dr
 각 폴더의 `SKILL.md`가 핵심 지침입니다. 필요한 스킬만 설치할 수 있습니다. 원문은 한국어와 영어가 혼합되어 있으며, 이미지 프롬프트 복원 스킬은 기본적으로 한국어·영어 프롬프트를 모두 제공합니다.
 
 개발 안내: 이 스킬 모음은 AI가 생성하고 사용자 요구와 사용 피드백으로 개선했습니다. [전체 고지](#ai-개발-고지)를 확인하세요.
+
+[스킬 선택](#스킬-선택) · [설치](#설치) · [사용 예시](#사용) · [의존성과 적용 범위](#의존성과-적용-범위) · [라이선스](LICENSE)
 
 ## 스킬 선택
 
