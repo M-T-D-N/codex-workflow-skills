@@ -18,9 +18,9 @@ Nine focused, independently installable skills for grounded changes, evidence-dr
 
 | 스킬 | 해결하는 문제 | 요청 예시 |
 |---|---|---|
-| [request-grounding](skills/request-grounding/SKILL.md) | 기존 기능과 실제 요구를 확인하기 전에 구현부터 시작함 | “기능 추가 전에 이미 가능한지, 어느 계층을 바꿔야 하는지 확인해줘.” |
+| [request-grounding](skills/request-grounding/SKILL.md) | 요구·기존 기능·소유 계층이 불명확한데 구현부터 시작함 | “이 기능이 이미 가능한지, 어느 계층을 바꿔야 하는지 불명확해. 확인해줘.” |
 | [evidence-driven-debugging](skills/evidence-driven-debugging/SKILL.md) | 첫 수정 후 재발하거나 여러 원인이 혼재함 | “수정 후에도 재발했어. 원인을 판별할 근거를 먼저 찾아줘.” |
-| [execute-leanly](skills/execute-leanly/SKILL.md) | 파일 읽기·계획·상태 조회·검증을 반복함 | “검증된 지점부터 남은 작업만 이어서 처리해줘.” |
+| [execute-leanly](skills/execute-leanly/SKILL.md) | 파일 읽기·계획·상태 조회·검증을 반복함 | “현재 승인된 작업에서 반복 조회를 줄이고 오래 걸리는 실행을 안전하게 지켜봐줘.” |
 | [swarm](skills/swarm/SKILL.md) | 위임할 수 있는 구현·근거 수집을 메인이 모두 수행함 | “범위가 명확한 구현과 근거 수집을 적합한 작업자에게 맡기고 결과를 검증해줘.” |
 | [adversarial-review](skills/adversarial-review/SKILL.md) | 취합한 결론의 숨은 전제와 중요한 반례를 놓침 | “이 계획을 적대적으로 검토하고 유지할지 판단해줘.” |
 | [codex-why](skills/codex-why/SKILL.md) | 관행·추론·과거 결정을 필수 규칙처럼 설명함 | “그 승인이 필수라는 판단은 어떤 현재 규칙에서 나왔어?” |
@@ -72,7 +72,7 @@ $visual-prompt-reconstructor 첨부 이미지를 재현할 한국어·영어 프
 ## 의존성과 적용 범위
 
 - **일반 워크플로 스킬:** 별도의 기억 서버나 전용 실행 서비스가 필요하지 않습니다. 다른 스킬 이름은 선택적 연계 안내입니다. 필요한 도구가 없으면 미확인 사항을 표시하며 결과를 꾸며내지 않습니다.
-- **swarm:** 범위와 결과 확인 방법이 명확한 구현·근거 수집을 적합한 작업자에게 맡깁니다. 검증된 좁은 작업에는 Local Qwen을, 그 밖의 준비된 작업에는 호스트가 지원하는 `gpt-5.6-luna`의 `max` 설정을 기본으로 선택합니다. Luna는 한 번에 한 작업만 수행하며, 완료된 뒤 다음 작업에 순차 재사용할 수 있습니다. 단순 경과 시간·침묵·대기 도구의 시간 초과만으로 실패를 판정하지 않고, 사용자·호스트의 제한과 실제 실행 상태를 따릅니다. 실패한 목표의 연쇄 재위임은 금지합니다. 이 배포판은 모델이나 실행기를 제공하지 않으며, 필요한 모델·도구·권한이 없으면 메인이 수행합니다. [설정 계약](skills/swarm/references/worker-setup.md)과 [Luna 실행·가격 근거](skills/swarm/references/luna-lane.md)를 참고하세요. 가격표는 날짜가 명시된 API 비교 자료이며 실제 Codex 요금·절감액을 뜻하지 않습니다.
+- **swarm:** 범위와 결과 확인 방법이 명확한 구현·근거 수집을 적합한 작업자에게 맡깁니다. 독립 구현은 `gpt-6.1-sol`, 좁은 구현·변환·시험 분기·근거 수집은 `gpt-6-luna`를 기본으로 선택하며, 두 모델의 추론 강도는 `high`에서 작업에 맞게 조정합니다. 명시적인 사용자 작업자 선택을 우선하고 메인 모델은 유지합니다. Local Qwen은 자연스럽게 분리되는 저위험 작업에 시작·검증 비용이 작을 때 선택하며, 설정된 어댑터의 실제 입력·권한 한계를 따릅니다. Luna는 한 번에 한 작업만 수행하고 호환되는 작업자는 완료·변경 귀속 후 재사용할 수 있습니다. 단순 경과 시간·침묵·대기 시간 초과만으로 실패를 판정하지 않으며, 사용자·호스트 제한과 실제 실행 상태를 따릅니다. 실패한 목표의 연쇄 재위임은 금지합니다. 이 배포판은 모델이나 실행기를 제공하지 않으며, 필요한 모델·도구·권한이 없으면 메인이 수행합니다. [설정 계약](skills/swarm/references/worker-setup.md), [인계·결과 계약](skills/swarm/references/handoff-and-results.md), [네이티브 실행·가격 근거](skills/swarm/references/luna-lane.md)를 참고하세요. API 가격은 비용 비교가 필요할 때 현재 공식 자료로 확인하며 실제 Codex 요금·절감액을 뜻하지 않습니다.
 - **visual-prompt-reconstructor:** 이미지를 읽을 수 있는 호스트와 실제 참고 이미지가 필요합니다. 생성 도구는 프롬프트 작성만 할 때는 필요하지 않습니다.
 - **Codex 전용 동작:** `agents/openai.yaml`, task 관리, 도구·승인 방식은 호스트에 따라 다릅니다. 다른 에이전트에서의 동일 동작은 검증하지 않았습니다.
 

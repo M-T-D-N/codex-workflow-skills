@@ -1,6 +1,6 @@
 ---
 name: request-grounding
-description: Before choosing or making a nontrivial change, ground the actual user request in verified current behavior, existing capabilities, the user-visible workflow, and the owning layer, then choose the smallest appropriate change mode. Use automatically when past context matters, an existing feature may already satisfy the request, user-visible behavior may map to a different internal object, ownership is unclear, or premature implementation risks duplication or rework. Do not use for fixed small edits, simple Q&A or status checks, settled implementation, pure UI or copy work, or recurrent multi-cause technical failures that require evidence-driven debugging.
+description: Choose the smallest suitable change when the intended behavior, existing capability or owning component is materially uncertain. Skip settled changes and read-only Q&A; route recurrent or multi-cause failures to evidence-driven-debugging.
 ---
 
 # Request Grounding
@@ -9,7 +9,7 @@ Prevent premature implementation by determining what the request actually requir
 
 ## Trigger
 
-Apply before nontrivial planning or change when at least one condition holds:
+Apply before selecting a change only when current evidence could materially change the target, semantics, or change mode and at least one condition holds:
 
 - Past work, decisions, or the user's established workflow could change the interpretation.
 - An existing capability may already satisfy all or part of the request.
@@ -18,7 +18,7 @@ Apply before nontrivial planning or change when at least one condition holds:
 - The choice among configuring, exposing, deleting, refactoring, extending, or implementing is unsettled.
 - Skipping current-state inspection creates a material risk of duplicate or misplaced work.
 
-Do not activate merely because a task involves code or a repository. Skip it when the target, semantics, and acceptance condition are already fixed and the task is a small edit; when the request is only Q&A, status, or a scope-fixed review; or when a narrower specialist skill already owns the decision.
+Do not activate merely because a task involves code, past context, or a repository. Skip it when the target, semantics, and acceptance condition are already settled, regardless of task size; when the request is only Q&A, status, or a scope-fixed review; or when a narrower specialist skill already owns the decision.
 
 ## Ground the Request
 

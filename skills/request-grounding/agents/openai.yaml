@@ -1,7 +1,7 @@
 interface:
   display_name: "Request Grounding"
   short_description: "변경 전에 요청과 현재 상태를 맞추는 선행 판단"
-  default_prompt: "Use $request-grounding to verify the actual goal and current system state before choosing a change."
+  default_prompt: "Use $request-grounding to resolve uncertainty about intended behavior, existing capabilities, or ownership before choosing the smallest suitable change."
 
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: prepare-codex-handoff
-description: "Prepare one copy-ready, context-preserving prompt for resuming current work in another Codex task. Use when the user asks for a 다음 대화용 프롬프트, 인계 프롬프트, 재개 프롬프트, or a prompt to paste into a new Codex task. Preserve goals, approval boundaries, decisions, verified state, remaining work, blockers, and recovery references while removing duplicated narrative. Do not use when the user asks Codex to actually create, fork, open, or hand off a task, or for continuing work in the current task, generic status summaries, handoffs to people or other tools, or simple task planning."
+description: Prepare a prompt to paste into another Codex task when the user requests a handoff or resumption prompt. Exclude actual task creation, forking or transfer, current-task continuation, and handoffs to people or other tools.
 ---
 
 # Prepare Codex Handoff
