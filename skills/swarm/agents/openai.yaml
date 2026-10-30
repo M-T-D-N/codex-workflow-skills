@@ -1,7 +1,7 @@
 interface:
   display_name: "Swarm"
   short_description: "Delegate bounded work and preserve verification"
-  default_prompt: "Use $swarm to route suitable implementation or bounded evidence collection to a worker before Main solves it, preserving scope and verification."
+  default_prompt: "Use $swarm to delegate substantial, independently checkable implementation, investigation, verification or document work before Main solves it, preserving scope and acceptance."
 
 policy:
   allow_implicit_invocation: true

@@ -1,7 +1,7 @@
 interface:
-  display_name: "Prepare Codex Handoff"
-  short_description: "Prepare a prompt for resuming in another Codex task"
-  default_prompt: "Use $prepare-codex-handoff to prepare a context-preserving prompt for another Codex task."
+  display_name: "Prepare Context Transfer"
+  short_description: "Prepare context for another chat, AI or person"
+  default_prompt: "Use $prepare-codex-handoff to prepare recipient-ready context for the requested destination and deliver it only within my authorization."
 
 policy:
   allow_implicit_invocation: true

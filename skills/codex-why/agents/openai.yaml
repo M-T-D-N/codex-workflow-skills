@@ -1,7 +1,7 @@
 interface:
   display_name: "Codex Why"
-  short_description: "Codex 판단의 출처·권위·현재성을 추적합니다"
-  default_prompt: "Use $codex-why to trace the authority and provenance of this Codex claim."
+  short_description: "Codex 규칙·선호·플랫폼 요구 주장의 출처를 추적합니다"
+  default_prompt: "Use $codex-why to trace the authority and provenance of a claim about Codex rules, policies, user preferences or platform requirements."
 
 policy:
   allow_implicit_invocation: true

@@ -1,13 +1,13 @@
 # Native worker execution
 
-Use the exact model and effort selected by Swarm or the explicit user request for a bounded, independently checkable native unit. This reference governs native tools only. It owns implementation → relevant verification → ordinary local corrections → evidence return, or the specified read-only question. No fixed 1–3-file limit applies; ownership and reviewable scope do.
+Use the exact model and effort selected by Swarm or the explicit user request for a bounded, independently checkable native unit. This reference governs native tools only; user-authorized ordinary app tasks use [app workers](app-lane.md). It owns implementation → relevant verification → ordinary local corrections → evidence return, or the specified read-only question. No fixed 1–3-file limit applies; ownership and reviewable scope do.
 
 ## Dispatch and ownership
 
-- Explicitly pass that model and effort using the actual supported spawn arguments; never silently downgrade or substitute. Use `fork_turns="none"` or a bounded positive recent-turn count with the packet. A full-history fork inherits Main's settings and cannot serve as this model override.
+- When the host exposes `spawn_agent` with `model`, `reasoning_effort` and `fork_turns`, pass the selected pair explicitly with `fork_turns="none"` and a bounded handoff, even when that pair matches Main. Naming settings only in the handoff does not set them. For that tool schema, use `"none"` or `"all"`, not an invented numeric turn count; `"all"` inherits Main's settings and cannot carry explicit model/effort overrides. Never silently downgrade or substitute.
 - Preserve the user's Main settings and the current native tool's permissions and scheduling conditions. Prefer the existing explicit spawn path; a new custom role, global subagent default, hook, or proxy is not a prerequisite.
 - Start only when the unit needs no unfinished Main/Qwen result. If the host requires useful independent parallel work, satisfy that condition or keep this unit with Main. If it permits serial offloading, Main may wait without inventing side work.
-- Keep one active Luna unit at a time. Concurrent writers must own disjoint scope in separate repositories/worktrees allowed by project policy; otherwise serialize. Read-only work must not mutate shared state through tests.
+- Follow current host capacity and scheduling limits. Parallelize independent units only when the benefit exceeds coordination cost. Concurrent writers must own disjoint scope in separate repositories/worktrees allowed by project policy; otherwise serialize. Read-only work must not mutate shared state through tests.
 - Reuse a healthy idle compatible child for directly related subsequent work when supported. Compatibility includes the selected model and effort. Native `followup_task` does not expose model/effort overrides; to change that pair, use a supported new spawn after the previous execution has ended and its effects are attributed. Do not rely on a prompt asking an existing child to change its own settings. Check its known model and effort against the intended role using existing creation/settings evidence; a Main model change or edited skill does not update an existing child. If that evidence is unavailable, do not claim the requested model is confirmed. Retain a different model only when it remains suitable and no explicit model requirement is violated. Otherwise a different ready objective can use a new native call after the prior execution has ended and its effects are attributed and integrated. Do not accumulate unrelated work merely to reuse context, assume a reusable slot from turn completion, or evade capacity limits.
 
 ## Worker startup instructions
@@ -39,6 +39,6 @@ If spawn is rejected, ownership has not transferred. Follow Swarm's capacity bra
 
 ## Price evidence
 
-Use current official model rates only when a cost comparison requires them: [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna), [Astra](https://developers.openai.com/api/docs/models/gpt-6-astra). Record date, service tier and cache assumptions; these rates are not Codex subscription usage.
+Use current official model rates only when a cost comparison requires them: [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna), [GPT-6.1 Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra), [Astra](https://developers.openai.com/api/docs/models/gpt-6-astra). Record date, service tier and cache assumptions; these rates are not Codex subscription usage.
 
 Sum nonoverlapping ordinary input, cache read/write and output once. Reasoning already included in output is not added again. Include Main preparation/review/rework and every worker attempt or promotion. Without comparable completed-work evidence, keep realized savings unmeasured.

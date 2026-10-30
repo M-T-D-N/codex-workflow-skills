@@ -1,7 +1,7 @@
 interface:
   display_name: "Pink Elephant Guard"
-  short_description: "현재 확정안만으로 최종 산출물을 깨끗하게 재구성"
-  default_prompt: "Use $pink-elephant-guard to rebuild this final deliverable from the current confirmed state without resurfacing rejected concepts."
+  short_description: "확정 산출물·전달 지시문에서 폐기안 재등장을 방지"
+  default_prompt: "Use $pink-elephant-guard on the confirmed deliverable or instruction portion, preserving required operational history and exact content."
 
 policy:
   allow_implicit_invocation: true

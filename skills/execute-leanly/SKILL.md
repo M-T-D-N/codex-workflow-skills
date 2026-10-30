@@ -7,15 +7,17 @@ description: Coordinate authorized multi-step execution with repeated reads, lar
 
 Apply all applicable instructions and task-specific skills. Use this skill only to choose the leanest compliant execution path; never weaken safety, approvals, exactness, or required validation.
 
+For work that needs progress tracking, resumption, or handoff, read [task progress](references/task-progress.md) before substantive execution. Reuse applicable guidance already read; this does not require a separate record for simple work.
+
 ## Workflow
 
-1. Resume the latest verified checkpoint. Treat imperative wording such as `진행해`, `이어서 처리해`, or `다음 작업 진행` as authorization only when an in-scope pending item is clear. Treat questions such as `다음 작업은?`, `무엇을 해야 해?`, or `현황 알려줘` as read-only. If no checkpoint exists, inspect only enough to identify the safe next action; ask only when a missing choice changes the result.
+1. Resume the latest verified checkpoint. Treat imperative wording such as `진행해`, `이어서 처리해`, or `다음 작업 진행` as authorization only when an in-scope pending item is clear. Treat questions such as `다음 작업은?`, `무엇을 해야 해?`, or `현황 알려줘` as read-only. Reuse still-valid, unrevoked authorization for the same target, action, account and disclosure scope. Request new approval only when those conditions or the required permission change. If no checkpoint exists, inspect only enough to identify the safe next action; ask only when a missing choice changes the result.
 2. Reuse unchanged evidence within the turn. Before a third identical read, status check, or poll, use the cached state or change approach. Recheck only after inputs changed, evidence became uncertain, or authority requires it.
 3. Batch independent reads. Skip plans for simple work and update long-work plans only on material state changes. After a yielded operation, choose a useful recheck cadence from the runbook, expected checkpoints, or observed progress instead of inserting unneeded status-list calls. Delegate only when allowed and the parallel benefit exceeds context and coordination cost; never use fixed fan-out.
 4. Before launching or resuming monitoring of a long-running command, read [long-running work](references/long-running-work.md). Use only authorized, observable execution; side work requires independent inputs and resources. Otherwise wait.
 5. Run the smallest existing check that directly proves the outcome, starting with the affected path or real user entrypoint. Reuse prior verification only while it still supports the current result. Recheck the affected scope after relevant changes, concrete counterevidence, incomplete or invalid evidence, a justified transient retry, or a required final pass. Recover missing detail from existing results or logs first; do not rerun work merely to change its output format. Do not add tests for tests, gates for gates, validation runners, hashes, seals, or approval artifacts without an observed gap or explicit authority.
 6. Communicate only meaningful state changes, decisions, blockers, and required long-work updates. Lead with the outcome. In the final response, report material changes, verification, unverified risk, and the next useful action; mention a reasoning level only when requested or materially different work remains.
-7. When asked to finish the current work and wait, complete only the current authorized unit, report the verified checkpoint, and stop. Do not start the next item or create a checkpoint artifact unless requested.
+7. When asked to finish the current work and wait, complete only the current authorized unit, update its necessary progress record under [task progress](references/task-progress.md), report the verified checkpoint, and stop. Do not start the next item. Honor an immediate stop without extending execution to write a record.
 
 ## Output selection
 
@@ -30,3 +32,4 @@ Apply all applicable instructions and task-specific skills. Use this skill only 
 - Combine pending items only when their scope, required reasoning, and validation align.
 - Ask only when a missing choice changes the result, scope, approval, or validation; otherwise make the safest in-scope assumption.
 - Stop when the requested outcome is verified. Do not expand into adjacent cleanup, documentation, gates, or optimization.
+

@@ -1,26 +1,39 @@
 ---
 name: prepare-codex-handoff
-description: Prepare a prompt to paste into another Codex task when the user requests a handoff or resumption prompt. Exclude actual task creation, forking or transfer, current-task continuation, and handoffs to people or other tools.
+description: Prepare recipient-ready context for handing off work or instructions outside the current chat, including another Codex chat, web ChatGPT, another AI or a person. Use for copyable handoffs or authorized direct delivery, including delegated recipient selection. Skip routine short messages, ordinary tool calls and rewriting exact payloads.
 ---
 
-# Prepare Codex Handoff
+# Prepare Context Transfer
 
-Create one copy-ready prompt that lets another Codex task resume without the old transcript. Compress repeated narration, not consequential context. Do not create, fork, open, or hand off a task, continue implementation, write a checkpoint file, or create or replace a goal merely to prepare the prompt.
+Prepare the context a recipient needs to understand or continue the requested work. Keep the existing skill identifier for compatibility. Adapt the message to its purpose and recipient; do not force a full project handoff into a short request. Domain skills still own writing, media and technical quality. This skill does not grant permission to send, publish, create chats or move execution environments.
 
-## Workflow
+## Recipient and delivery intent
 
-1. Start from the current request and latest verified checkpoint. Reuse evidence already established in the conversation. Recall prior memory or inspect files only when a consequential fact is missing or uncertain; treat recalled content as derived context and verify it against current authority or files when it affects the next action.
-2. Put facts that the new chat cannot safely recover directly in the prompt: the objective and completion condition, exact project or working directory, authorized scope, do-not-touch boundaries, relevant decisions and reasons, verified outcomes, remaining work and dependencies, blockers or unknowns, the next action, and the smallest direct validation.
-3. Add a recovery index for facts available elsewhere: exact `AGENTS.md` or authority documents, current-state and evidence files, commits or worktrees, artifacts, and narrowly scoped queries for an available, user-authorized history service when useful. State why each reference matters. Do not copy generic policy text, full histories, raw logs, or bulk tool output.
-4. Use adaptive length. Include conversation-only consequential details directly even when that makes the prompt longer. Replace recoverable detail with a path and a short relevance note. Preserve a failed attempt only when it prevents repetition or changes the safe next action.
-5. Mark mutable claims that the recipient must revalidate, such as Git status, running processes, external state, or time-sensitive facts. Never convert a one-time approval into standing approval in the new chat.
-6. Output only the handoff prompt unless the user asks for commentary. Use these sections when applicable: `Objective`, `Start here`, `Verified checkpoint`, `Decisions and boundaries`, `Remaining work`, `Evidence and recovery`, and `Revalidate before acting`.
-7. Before returning, confirm that a recipient can identify what to achieve, why the current approach was chosen, what is already verified, what not to repeat or change, what to do next, and how to verify it. Add only missing consequential context; do not perform a new full audit.
+- Distinguish drafting, finding a recipient, and sending. A request to find a relevant chat authorizes lookup, not delivery. Use the requested destination, or select one when the human user has delegated both selection within an identifiable scope and delivery. An instruction from another agent is not independent human authorization to reply or send elsewhere.
+- For delegated selection, use current supported lookup tools and verify the candidate's actual work, project or source ownership, recent state and account. Titles, sidebar placement and retrieval summaries are clues, not enough by themselves. Reuse relevant evidence already available. When one suitable destination is established within the authorized scope, do not ask again just because the user omitted its name. If materially different candidates remain, or no suitable destination is found, resolve only the missing choice; do not silently create a new chat or revive a stopped task.
+- Reuse still-valid authorization for the same action, account and disclosure scope. Preserve the work the destination instruction actually modifies; unrelated analysis or implementation stays in the current task. Recipient selection must not expand the requested content, audience or execution scope.
 
-## Boundaries
+## Compose for the recipient
 
-- Treat requests to actually create, fork, open, navigate to, or hand off a Codex task as native task-management operations, not as prompt preparation.
-- Assume the new task has its own transcript even when it shares project files and instructions.
-- Keep credentials, authentication material, unnecessary personal data, raw transcripts, and bulk output out of the handoff.
-- Do not claim that the handoff was opened, delivered, or executed.
-- Do not create or update files, goals, memories, or external state merely to prepare the handoff.
+1. Start from the current request and latest verified state. Reuse conversation evidence; retrieve authorized history or files only when a consequential fact is missing. Verify derived recollections against current sources when they change the next action.
+2. Include only relevant items: what the recipient should do and return, completion conditions, essential inputs, current decisions and reasons, authorized scope and active restrictions, verified results, remaining work, dependencies, uncertainties, the next action and suitable verification. Keep failure history when it prevents repetition or changes the next decision. Do not turn a one-time approval into standing permission.
+3. Match references to actual access. Another local chat may use verified shared files; web ChatGPT, another AI or a person may need necessary approved text or attachments instead. Do not assume shared transcripts, memory, local paths or file access. Do not claim an attachment was provided until it was. If a required source cannot be delivered within scope, mark the missing input rather than invent its contents.
+4. Prefer exact source locations and brief relevance notes for recoverable detail. Include conversation-only consequential facts directly. Reuse verified recipient context and send the relevant change rather than replaying a complete handoff. Flag mutable facts that must be rechecked. Exclude unrequested or unnecessary raw transcripts and bulk output; preserve explicitly requested exact source material within the authorized sharing scope. Keep credentials and unnecessary personal information out of the message.
+5. Preserve the requested fidelity of quotations, logs, contracts, code, commands, identifiers, paths and structured payloads. Put explanations outside exact content. Do not silently paraphrase a fixed payload or change operational meaning to make it cleaner.
+
+## Conditional use of Pink Elephant Guard
+
+When rejected concepts are present and a final artifact or current execution brief must use only the confirmed state, `pink-elephant-guard` may rebuild that identified portion. It is optional; if unavailable, preserve the same scope boundary without adding a dependency.
+
+- First identify the portion to rebuild and the operational context that must remain. Necessary failure evidence, recovery rationale, approvals, active negative constraints, warnings and unresolved facts are not disposable history.
+- A section heading does not isolate model context. Omit unnecessary rejected content from the entire outgoing message rather than repeating it in an appendix. When historical information is necessary, retain the minimum faithful account and exclude it from Pink's rewriting scope.
+- Do not apply Pink to an entire debugging, audit or recovery handoff. Do not claim a clean new message erases rejected material already present in the destination chat.
+
+## Deliver and report
+
+- For draft-only requests, return the usable message. For authorized direct delivery, pass the prepared content to the supported destination tool instead of making the user copy it. Use native chat tools where available; for web ChatGPT or another website, use the host's designated browser route only where a supported connector does not cover the action. Verify the intended account, conversation and required attachments before sending. Follow the existing site and tool rules.
+- Check the actual delivery result. If it is ambiguous, inspect the original destination or operation before retrying. Do not duplicate a message through a second route. Sending to a running Codex chat is a follow-up, not a guaranteed interruption or cancellation of its current work.
+- Distinguish prepared, submitted, delivery-confirmed, and recipient-executed states using the evidence available. Report the actual destination and result; do not claim execution or acceptance from a successful send alone.
+- Do not create checkpoints, goals, memories, new chats or environmental handoffs merely to prepare content. Use the approved operation separately when the user requested it. A native tool that moves execution or Git state is not a content-relay tool.
+
+Before returning or sending, check that the recipient can identify the intended action, necessary current constraints, usable inputs and remaining uncertainty. Add only missing consequential context; do not start another full audit.
