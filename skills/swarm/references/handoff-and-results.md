@@ -59,7 +59,7 @@ After a failed, invalid, ambiguous or incomplete Qwen result, confirm execution 
 
 After a native spawn is rejected by capacity/model/surface availability, do not repeat it. Inspect `list_agents` at most once if useful; reuse only an exactly compatible idle non-root child via supported `followup_task`, otherwise Main owns the unit. Do not infer a slot leak or create a new task/fork to evade the limit. Reuse an unresolved common execution failure for affected units until evidence changes.
 
-Use independent review only when requested or justified by consequence, conflicting evidence, or a material validation gap. Keep consequential final criticism with Main. For a specifically justified, cheap, non-final Qwen evidence check, read [Qwen critic](qwen-critic.md); it is not a routine stage, and Qwen never reviews its own candidate. Otherwise Main reviews unless independence is an explicit acceptance condition; report unavailable independent review honestly.
+Use independent review only when requested or justified by consequence, conflicting evidence, or a material validation gap. Main makes consequential final judgments and owns acceptance. When independent review is warranted, select a native worker suited to the review unit. For a specifically justified, cheap, non-final Qwen evidence check, read [Qwen critic](qwen-critic.md); it is not a routine stage, and Qwen never reviews its own candidate. Otherwise Main reviews unless independence is an explicit acceptance condition; report unavailable independent review honestly.
 
 ## Result contract
 
